@@ -46,7 +46,7 @@ export default function HomeClient({ bookmarkedCourses: initialCourses }) {
   };
 
   return (
-    <div className="px-6 py-8 w-full">
+    <div className="px-2 md:px-6 py-8 w-full">
       <h1 className="text-2xl font-bold mb-4">Welcome back, {user.name}!</h1>
 
       {bookmarkedCourses.length === 0 ? (
