@@ -41,18 +41,13 @@ export async function POST(request) {
       );
     }
 
-    // 4. Existing username check
-    const existingUsername = await User.findOne({ username });
-    if (existingUsername) {
-      return NextResponse.json(
-        { error: "Username is already taken" },
-        { status: 409 }
-      );
-    }
-
     // 5. Hash password
     const salt = await bcrypt.genSalt(11);
     const passwordHash = await bcrypt.hash(password, salt);
+
+    // 👇 Generate profilePic using name
+    const encodedName = encodeURIComponent(name.trim());
+    const profilePic = `https://api.dicebear.com/7.x/initials/svg?seed=${encodedName}`;
 
     // 6. Create user
     const newUser = new User({
@@ -60,6 +55,7 @@ export async function POST(request) {
       username,
       email,
       passwordHash,
+      profilePictureUrl: profilePic,
     });
 
     // 7. OTP generation and assignment

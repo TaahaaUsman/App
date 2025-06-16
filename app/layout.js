@@ -20,7 +20,7 @@ export const metadata = {
     title: "Virtual University Support Platform",
     description:
       "A complete solution for Virtual University students to master their subjects, practice questions, and achieve academic success with advanced tools.",
-    url: "https://quiz-app-gray-chi.vercel.app/",
+    url: "https://app-pearl-iota.vercel.app/",
     siteName: "VU Support Platform",
     images: [
       {
