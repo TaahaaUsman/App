@@ -10,8 +10,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title:
-    "Virtual University Support Platform",
+  title: "Virtual University Support Platform",
   description:
     "An all-in-one learning platform for Virtual University students to access study materials, practice MCQs, and use modern learning techniques to achieve over 90% CGPA. Prepare for CS101, MTH202, and all major VU subjects with AI-powered tools and personalized support.",
   keywords:
@@ -49,8 +48,8 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Analytics />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
