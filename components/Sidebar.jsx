@@ -1,24 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import { category } from "../assets/categorie";
+import useIsMobile from "@/utils/useIsMobile";
 
 export default function Sidebar() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // mobile if less than 768px
-    };
-
-    handleResize(); // Run once when mounted
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize); // Clean-up
-  }, []);
-
-  const handleClick = (id) => {
-    dispatch(setSelectedCategory(id));
-  };
+  const isMobile = useIsMobile();
 
   if (isMobile) return <></>;
 

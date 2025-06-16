@@ -1,50 +1,51 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import Link from 'next/link';
-import { FaBookmark } from 'react-icons/fa6';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import Link from "next/link";
+import { FaBookmark } from "react-icons/fa6";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CourseList({ courses = [] }) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const notify = (msg) => {
     toast(msg, {
-      position: 'top-right',
+      position: "top-right",
       autoClose: 2000,
-      theme: 'dark',
+      theme: "dark",
     });
   };
 
   const bookMark = async (courseId, code) => {
     try {
-      const response = await fetch('/api/courses/bookmark', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/courses/bookmark", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ courseId }),
       });
 
       if (!response.ok) {
-        notify('Failed to bookmark.');
+        notify("Failed to bookmark.");
         return;
       }
 
       notify(`📌 ${code} Bookmarked`);
     } catch (error) {
-      console.log('Error in bookmark function', error);
-      notify('An error occurred.');
+      console.log("Error in bookmark function", error);
+      notify("An error occurred.");
     }
   };
 
   // Filter courses
-  const filteredCourses = courses.filter((course) =>
-    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    course.code.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div className="w-full pl-8 md:pl-0 pr-2 md:pr-0 md:px-8 lg:px-12 xl:px-20">
+    <div className="w-full px-2 md:px-8 lg:px-12 xl:px-20">
       <ToastContainer />
       <div className="overflow-x-auto">
         <h1 className="text-2xl font-bold mb-4">Available Courses</h1>
@@ -76,17 +77,28 @@ export default function CourseList({ courses = [] }) {
           <tbody>
             {filteredCourses.map((course, index) => (
               <tr key={course._id || index}>
-                <td className="border border-gray-200 px-4 py-2">{index + 1}</td>
                 <td className="border border-gray-200 px-4 py-2">
-                  <Link href={`/courses/${course._id}`} className="text-blue-500 hover:underline">
+                  {index + 1}
+                </td>
+                <td className="border border-gray-200 px-4 py-2">
+                  <Link
+                    href={`/courses/${course._id}`}
+                    className="text-blue-500 hover:underline"
+                  >
                     {course.code}
                   </Link>
                 </td>
                 <td className="border border-gray-200 px-4 py-2 flex items-center justify-between">
-                  <Link href={`/courses/${course._id}`} className="text-blue-500 hover:underline">
+                  <Link
+                    href={`/courses/${course._id}`}
+                    className="text-blue-500 hover:underline"
+                  >
                     {course.title}
                   </Link>
-                  <div className="cursor-pointer ml-4" onClick={() => bookMark(course._id, course.code)}>
+                  <div
+                    className="cursor-pointer ml-4"
+                    onClick={() => bookMark(course._id, course.code)}
+                  >
                     <FaBookmark style={{ width: 20, height: 20 }} />
                   </div>
                 </td>
