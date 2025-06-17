@@ -1,13 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
-import {
-  FaFacebook,
-  FaEnvelope,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-} from "react-icons/fa";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
