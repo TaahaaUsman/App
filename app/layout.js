@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Head from "next/head";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -11,23 +10,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Virtual University Support Platform",
+  title: "The VU World",
   description:
     "An all-in-one learning platform for Virtual University students to access study materials, practice MCQs, and use modern learning techniques to achieve over 90% CGPA. Prepare for CS101, MTH202, and all major VU subjects with AI-powered tools and personalized support.",
-  keywords:
-    "virtual university, vu learning, vu support platform, vu mcqs, vu past papers, vu materials, high CGPA, learn vu subjects, vu LMS, vu handouts, vu short notes, vu short questions, vu long questions, vu mind maps",
+  keywords: [
+    "virtual university",
+    "vu learning",
+    "vu support platform",
+    "vu mcqs",
+    "vu past papers",
+    "vu materials",
+    "high CGPA",
+    "learn vu subjects",
+    "vu LMS",
+    "vu handouts",
+    "vu short notes",
+    "vu short questions",
+    "vu long questions",
+    "vu mind maps",
+    "midterm preparation",
+    "finalterm preparation",
+    " vu MIDTERM preparatin",
+    "vu FINALTERM prepration",
+  ],
+  metadataBase: new URL("https://www.thevu.world"),
   openGraph: {
-    title: "Virtual University Support Platform",
-    description:
-      "A complete solution for Virtual University students to master their subjects, practice questions, and achieve academic success with advanced tools.",
-    url: "https://app-pearl-iota.vercel.app/",
-    siteName: "VU Support Platform",
+    title: "The VU World",
+    description: "All-in-one VU learning platform with MCQs and resources.",
+    url: "https://www.thevu.world",
+    siteName: "The VU World",
     images: [
       {
         url: "/preview.png",
-        width: 800,
-        height: 600,
-        alt: "VU Support Platform",
+        width: 1200,
+        height: 630,
+        alt: "The VU World Preview",
       },
     ],
     locale: "en_US",
@@ -35,22 +52,22 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Virtual University Support Platform",
-    description:
-      "Smart study, practice, and revision tools for Virtual University students to boost their CGPA.",
+    title: "The VU World",
+    description: "VU learning made easy. Practice MCQs and prepare smartly.",
     images: ["/preview.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://www.thevu.world",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="5_r7nAihC2I8onDX1MGYdEjHZKzp6kri_M74N5rhj7U"
-        />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -61,3 +78,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

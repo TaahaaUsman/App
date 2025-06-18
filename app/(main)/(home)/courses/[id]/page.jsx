@@ -21,6 +21,51 @@ const getCourseDetails = async (courseId) => {
   }
 };
 
+// 👇 Add this new function
+export async function generateMetadata({ params }) {
+  const course = await getCourseDetails(params.id);
+  console.log(course);
+
+  if (!course) return { title: "Course Not Found" };
+
+  return {
+    title: `${course.title} | ${course.code} | The VU World`,
+    description: `Practice quizzes, view details, and prepare for ${course.title} (${course.code}) on The VU World.`,
+    keywords: [
+      course.title,
+      course.code,
+      "VU",
+      "Virtual University",
+      "MCQs",
+      "Quizzes",
+    ],
+    openGraph: {
+      title: `${course.title} | ${course.code}`,
+      description: `Get access to quiz materials and resources for ${course.title} on The VU World.`,
+      url: `https://www.thevu.world/courses/${params.id}`,
+      siteName: "The VU World",
+      images: [
+        {
+          url: "/course_preview.png",
+          width: 1200,
+          height: 630,
+          alt: `${course.title} OG Image`,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${course.title} | The VU World`,
+      description: `Prepare for ${course.title} with top-quality MCQs and materials.`,
+      images: ["/course_preview.png"],
+    },
+    alternates: {
+      canonical: `https://www.thevu.world/courses/${params.id}`,
+    },
+  };
+}
+
 const Page = async ({ params }) => {
   const { id: courseId } = await params;
   const course = await getCourseDetails(courseId);
