@@ -6,17 +6,6 @@
       "has": [
         {
           "type": "host",
-          "value": "thevu.world"
-        }
-      ],
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://thevu.world/$1",
-      "has": [
-        {
-          "type": "host",
           "value": "www.thevu.world"
         }
       ],
