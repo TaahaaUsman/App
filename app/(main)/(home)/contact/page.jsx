@@ -5,11 +5,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { CldUploadWidget } from "next-cloudinary";
 
-export const metadata = {
-  title: "Contact | The VU World",
-  description: "Get in touch with The VU World support team.",
-};
-
 export default function ContactUsPage() {
   const [files, setFiles] = useState([]);
   const [description, setDescription] = useState("");
