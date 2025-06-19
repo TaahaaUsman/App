@@ -181,24 +181,6 @@ export default function LoginPage() {
           </button>
         </div>
 
-        {/* Switch Account */}
-        {session?.data?.user && (
-          <div className="mb-3 text-center">
-            <p className="text-sm text-gray-500">
-              Not you?{" "}
-              <button
-                onClick={() => {
-                  sessionStorage.removeItem("googleLoginHandled");
-                  signOut({ callbackUrl: "/auth/login" });
-                }}
-                className="text-blue-500 font-medium hover:underline"
-              >
-                Switch Account
-              </button>
-            </p>
-          </div>
-        )}
-
         {/* Register Link */}
         <p className="text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}

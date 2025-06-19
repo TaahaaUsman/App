@@ -40,6 +40,7 @@ export async function POST(request) {
       id: user._id,
       email: user.email,
       name: user.name,
+      profilePicture: user.profilePictureUrl,
     },
   };
 
